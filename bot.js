@@ -9,8 +9,8 @@ const ms = require('ms');  //WESO#0001
 const prefix = '-'
 
 client.on('message', msg => {  //WESO#0001
-    if (msg.content === 'باك') {  //WESO#0001
-      msg.reply('** :wink: وِلِـكُمِـ ﻧَوِرُتْ   :sparkling_heart:**');  //WESO#0001
+    if (msg.content === 'back') {  //WESO#0001
+      msg.reply('** :wink: Welcome   :sparkling_heart:**');  //WESO#0001
     }
   });
 
@@ -37,8 +37,8 @@ client.on('message', msg => {  //WESO#0001
 
   
    client.on('message', msg => {  //WESO#0001
-    if (msg.content === 'هلا') {  //WESO#0001
-      msg.reply('**هلا بيك :heart: **');  //WESO#0001
+    if (msg.content === 'hey') {  //WESO#0001
+      msg.reply('**hey you :heart: **');  //WESO#0001
     }
   });
 
@@ -51,10 +51,10 @@ client.on('message', msg => {  //WESO#0001
      let args = message.content.split(" ").slice(1);  //WESO#0001
        var nam = args.join(' ');
     
-      if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('`ADMINISTRATOR` للأسف هذه الخاصية تحتاج الى ').then(msg => msg.delete(6000))
-      if (!nam) return message.channel.send(`<@${message.author.id}> يجب عليك ادخال اسم`).then(msg => msg.delete(10000))  //WESO#0001
+      if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('`ADMINISTRATOR`Sorry but you need ').then(msg => msg.delete(6000))
+      if (!nam) return message.channel.send(`<@${message.author.id}> You need to enter a name`).then(msg => msg.delete(10000))  //WESO#0001
       message.guild.createChannel(nam, 'voice').then(c => setTimeout(() => c.delete(), 120000))   //WESO#0001
-      message.channel.send(`:ballot_box_with_check: TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> :stopwatch:  انتهى وقت الروم الصوتي`), 120000)) 
+      message.channel.send(`:ballot_box_with_check: TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> :stopwatch:  Terminate Time of room voice`), 120000)) 
     }
     });
 
@@ -4094,12 +4094,12 @@ return;
  client.on('message', message => {
   if(!message.channel.guild) return;
 if(message.content.startsWith('-bc')) {
-if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+if(!message.channel.guild) return message.channel.send('** Commands only for servers **').then(m => m.delete(5000));
+if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**You don't have permission** `ADMINISTRATOR`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 let copy = "ScrpitBot";
 let request = `Requested By ${message.author.username}`;
-if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
+if (!args) return message.reply('**   Enter what you wants to say  **');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
 msg.react('✅')
 .then(() => msg.react('❌'))
 .then(() =>msg.react('✅'))
@@ -4153,7 +4153,7 @@ let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
 let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
  
 EmbedBc.on("collect", r => {
-message.channel.send(`:ballot_box_with_check: تم ارسال الرساله بنجاح`).then(m => m.delete(5000));
+message.channel.send(`:ballot_box_with_check:  Done message sends  `).then(m => m.delete(5000));
 message.guild.members.forEach(m => {
 var bc = new
 Discord.RichEmbed()
@@ -4185,27 +4185,27 @@ client.on('message' , message => {
      var codes = args.join(' ')
        
         if(!codes) {
-          message.channel.send("قم بكتابة الرسالة | !rolebc @everyone message")
+          message.channel.send("Enter a message   | !rolebc @everyone message")
             return;
         }
      
      
               var role = message.mentions.roles.first();
                 if(!role) {
-                  message.reply("لا توجد رتبة بهذا الاسم")
+                  message.reply(" This isn't a role with this name ")
                     return;
                 }
             message.guild.members.filter(m => m.roles.get(role.id)).forEach(n => {
               n.send(
-              "**" + "السيرفر :" + "\n" +
+              "**" + "server :" + "\n" +
               `${message.guild.name}` + "\n" +
-              "المرسل :" + "\n" +
+              "Person that wants to send :" + "\n" +
               `${message.author.tag}` + "\n" +
-              "الرسالة :" + "\n" +
+              "Message :" + "\n" +
               `${codes}` + "**"
               )
             })
-            message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
+            message.channel.send(` Message send to  ${message.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
         }
     });
 
@@ -4238,9 +4238,9 @@ client.on('message',message =>{
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "setmember")) {
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **لا تمتلك صلاحيه**');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **لا امتلك صلاحيه**');
-    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ ** You don't have permission **');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ ** You don't have permission **');
+    message.channel.send('✅| ** Room has been created **');
     message.guild.createChannel(`Members : [ ${message.guild.members.size} ]` , 'voice').then(c => {
       console.log(`Done make room in: \n ${message.guild.name}`);
       c.overwritePermissions(message.guild.id, {
@@ -4334,8 +4334,8 @@ client.on('message', msg => {
     if(msg.content.startsWith('-binv')) {
     if(msg.channel.type === 'dm') return;
 const user = msg.mentions.users.first();
-if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
-if(!user.bot) return msg.reply('`منشن بوت`');
+if(!user) return msg.channel.send('``' + '** Choose the bot **' + '``')
+if(!user.bot) return msg.reply('` Ping Bot`');
 msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?client_id=${user.id}&scope=bot&permissions=384064`)
     }
 });
@@ -4349,13 +4349,10 @@ client.on("message", message => {
          .setDescription(`
   ●▬▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬▬●
 [ ★・rules   |  قوانين السيرفر  ]
-1) ممنوع السب مع اى سبب 
-2)ممنوع الحديث عن الدين او سبه او مفاوضات دينيه 
-5)ممنوع التحدث عن السياسه  "
-6)ممنوع الصور الاباحيه او اى شي مخل بالادب 
-7)ممنوع نشر صور من  مواقع التواصل الاجتماعى  بحقوق ملكيه
-8)ممنوع طلب الرتبه والرتب تكون بالتفاعل
-9)لاستخدام البوت  فى - #cmd
+1)  Don't insult  
+2)  Don't be a racist person   
+3)  Don't share any porn pics          
+4)  Don't use commands in chat
 __
 
 @everyone || @here
@@ -4376,11 +4373,11 @@ __
             var embed = new Discord.RichEmbed()
             .setAuthor(member.user.username, member.user.avatarURL)
             .setThumbnail(member.user.avatarURL)
-            .setTitle(`الله معاك ✋:skin-tone-1: 😔`)
-            .setDescription(`مع السلامه تشرفنا بك ✋:skin-tone-1: 😔 `)
-            .addField('👤   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+            .setTitle(`god with you  ✋:skin-tone-1: 😔`)
+            .setDescription(`Good bye bro   ✋:skin-tone-1: 😔 `)
+            .addField('👤   ❤',`**[ ${member.guild.memberCount} ]**`,true)
             .setColor('RED')
-            .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
+            .setFooter(`==== Hope to all enjoy ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
         
         var channel =member.guild.channels.find('name', 'leave')
         if (!channel) return;
@@ -4399,7 +4396,7 @@ var prefix = "-";
             Day = currentTime.getDate();
 
             var Date15= new Discord.RichEmbed()
-            .setTitle("**!-[ التاريخ ]-! **")
+            .setTitle("**!- [ Date ]-! **")
             .setColor('RANDOM')
             .setTimestamp()
             .setDescription( ""+ Day + "-" + Month + "-" + Year + "")
@@ -4410,7 +4407,7 @@ var prefix = "-";
 client.on('message', msg => {
                         let args = msg.content.split(" ").slice(1).join(" ")
 if (msg.content.split(" ")[0].toLowerCase() === "-cr") {
-    if(!args) return msg.channel.send('`الرجاء كتابة عدد اللوان المرجى صنعها`');
+    if(!args) return msg.channel.send('`please type the number of coulourd that need to make`');
              if (!msg.member.hasPermission('MANAGE_ROLES')) return;
               msg.channel.send(`** Done Colors Was Successful Created ${args}**`);
                   setInterval(function(){})
@@ -4507,10 +4504,10 @@ Password : **${random2}**
 P.P.------------------------P.P.`).catch(err => {
    if(err == "DiscordAPIError: Cannot send messages to this user") {
       return message.channel.send("**للأسف , لديك اعدادات خصوصية لاتسمح لي بأرسال رسائل خاصة لك **");
-}
+
 });
 
-message.channel.send("**تم الارسال الحساب في الخاص | ☑ **")
+message.channel.send("** Account sended in private| **")
 }});
 
 client.on('message', message => {
@@ -4801,7 +4798,8 @@ client.on('message',  (message) => {
 
   message.channel.send({
     embed: {
-      description: `${message.author.username} اداك بالقلم علي وشك ${user.username}!`,
+      description: `${message} PWP .author.usernameا
+  ${user.username}!`,
       image: {
         url: slaps[Math.floor(Math.random() * slaps.length)]
       }
